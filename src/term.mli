@@ -4,19 +4,37 @@ type var_sym
 type fon_sym
 
 
-type var
+type term
 
 
-type 'a term
+(**
+Provide an interpretation for each variable symbol and function symbol 
+*)
+type 'a model
 
 
-type term_model
-
-
-val str_of_var : var -> string 
-
-
+(** 
+Get a string for priting     
+*)
 val str_of_term : term -> string
 
 
-val 
+(**
+Construct a term with a string
+We want 
+ - term_of_str (str_of_term t) = t    
+ - str_of_term (term_of_str s) = s
+*)
+val term_of_str : string -> term
+
+
+
+(**
+Return the subsititution of a term in an otherr     
+*)
+val substitue : term -> term -> term -> term
+
+
+
+
+val eval: 'a model -> term -> 'a
